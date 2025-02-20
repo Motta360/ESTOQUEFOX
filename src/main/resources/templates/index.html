@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>FazerPedido</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+
+        /* Navbox fixo */
+        .nav-box {
+            width: 200px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            position: fixed; /* Fixa o navbox */
+            top: 60px; /* Distância do topo */
+            left: 20px; /* Distância da esquerda */
+            height: calc(100vh - 80px); /* Altura da tela menos margens */
+            overflow-y: auto; /* Permite rolagem se o conteúdo for muito longo */
+        }
+
+        .nav-box h2 {
+            margin-top: 0;
+        }
+
+        .nav-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-box ul li {
+            margin: 10px 0;
+        }
+
+        .nav-box ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-box ul li a:hover {
+            color: #007BFF;
+        }
+
+        /* Conteúdo principal deslocado */
+        .content {
+            flex-grow: 1;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: 240px; /* Desloca o conteúdo para a direita */
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+
+        .item label {
+            margin-right: 10px;
+        }
+
+        .item input[type="text"] {
+            width: 150px;
+            padding: 5px;
+            margin-left: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navegação</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/listaPedidos">ListaPedidos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <form action="#" th:action="@{/pedir}" th:object="${pedido}" method="post">
+<br>
+        <div class="container">
+        <!-- Box de Navegação -->
+        <div class="nav-box">
+            <h2>Categorias</h2>
+            <ul>
+                <li><a href="#aparador">APARADOR</a></li>
+                <li><a href="#armarios">ARMÁRIOS</a></li>
+                <li><a href="#balcao">BALCÃO</a></li>
+                <li><a href="#bancada">BANCADA E BANQUETAS</a></li>
+                <li><a href="#biombo">BIOMBO</a></li>
+                <li><a href="#cadeiras">CADEIRAS</a></li>
+                <li><a href="#cofres">COFRES E CVI'S</a></li>
+                <li><a href="#divisoria">DIVISÓRIA</a></li>
+                <li><a href="#estante">ESTANTE</a></li>
+                <li><a href="#forro">FORRO</a></li>
+                <li><a href="#fragmentadora">FRAGMENTADORA</a></li>
+                <li><a href="#frigobar">FRIGOBAR</a></li>
+                <li><a href="#gaveteiro">GAVETEIRO</a></li>
+                <li><a href="#guiche">GUICHÊ</a></li>
+                <li><a href="#lixeira">LIXEIRA</a></li>
+                <li><a href="#locker">LOCKER</a></li>
+                <li><a href="#longarina">LONGARINA</a></li>
+                <li><a href="#luminaria">LUMINÁRIA</a></li>
+                <li><a href="#lustre">LUSTRE</a></li>
+                <li><a href="#mesa">MESA</a></li>
+                <li><a href="#microondas">MICROONDAS</a></li>
+                <li><a href="#molduras">MOLDURAS</a></li>
+                <li><a href="#poltronas">POLTRONAS</a></li>
+                <li><a href="#puffs">PUFFS</a></li>
+                <li><a href="#racksequadros">RACKS E QUADROS</a></li>
+                <li><a href="#sofas">SOFÁS</a></li>
+                <li><a href="#tapetes">TAPETES</a></li>
+                <li><a href="#tvs">TVS</a></li>
+            </ul>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="content">
+            <label for="Agencia">Agencia</label>
+            <input type="text" name="Agencia" id="Agencia" th:field="*{agencia}"><br>
+            <label for="gestorSTD">Gestor Santander</label>
+            <input type="text" name="gestorSTD" id="gestorSTD" th:field="*{gestorSTD}"><br>
+            <label for="gerenciador">Gerenciador Responsável</label>
+            <input type="text" name="gerenciador" id="gerenciador" th:field="*{gerenciadora}"><br>
+            <label for="fornecedor">Fornecedor que acessará o estoque</label>
+            <input type="text" name="fornecedor" id="fornecedor" th:field="*{fornecedor}"><br>
+            <label for="data">Data prevista para acesso:</label>
+            <input type="date" name="data" id="data" th:field="*{data}"><br>
+            <label>Entrada ou Saída:</label><br>
+            <input type="radio" name="entrada" id="entrada" th:field="*{entrada}" value="entrada"> Entrada<br>
+            <input type="radio" name="entrada" id="saida" th:field="*{entrada}" value="saida"> Saída<br>
+            <label for="email">Email para contato:</label>
+            <input type="email" name="email" id="email" th:field="*{email}">
+
+            <!-- APARADOR -->
+            <div id="aparador" class="category">
+                <h3>APARADOR</h3>
+                <div class="item">
+                    <label for="aparador1">APARADOR DE ENVELOPE</label>
+                    <input type="checkbox" id="aparador1" onchange="mostrarInput('aparador1')" >
+                    <input type="text" id="input-aparador1" placeholder="Digite algo" th:field="*{aparadorDeEnvelope}">
+                </div>
+            </div>
+
+            <!-- ARMÁRIOS -->
+            <div id="armarios" class="category">
+                <h3>ARMÁRIOS</h3>
+                <div class="item">
+                    <label for="armario1">ARMÁRIO BAIXO OFICINAS</label>
+                    <input type="checkbox" id="armario1" onchange="mostrarInput('armario1')" >
+                    <input type="text" id="input-armario1" placeholder="Digite algo" th:field="*{armarioBaixoOficinas}">
+                </div>
+                <div class="item">
+                    <label for="armario2">ARMÁRIO BAIXO SMART RED</label>
+                    <input type="checkbox" id="armario2" onchange="mostrarInput('armario2')" >
+                    <input type="text" id="input-armario2" placeholder="Digite algo" th:field="*{armarioBaixoSmartRed}">
+                </div>
+                <div class="item">
+                    <label for="armario3">ARMÁRIO IMPRESSORA</label>
+                    <input type="checkbox" id="armario3" onchange="mostrarInput('armario3')" >
+                    <input type="text" id="input-armario3" placeholder="Digite algo" th:field="*{armarioImpressora}">
+                </div>
+                <div class="item">
+                    <label for="armario4">ARMÁRIO IMPRESSORA WORK CAFÉ</label>
+                    <input type="checkbox" id="armario4" onchange="mostrarInput('armario4')">
+                    <input type="text" id="input-armario4" placeholder="Digite algo" th:field="*{armarioImpressoraWorkCafe}">
+                </div>
+            </div>
+
+            <!-- BALCÃO -->
+            <div id="balcao" class="category">
+                <h3>BALCÃO</h3>
+                <div class="item">
+                    <label for="balcao1">BALCÃO COWORKING</label>
+                    <input type="checkbox" id="balcao1" onchange="mostrarInput('balcao1')">
+                    <input type="text" id="input-balcao1" placeholder="Digite algo" th:field="*{balcaoCoworking}">
+                </div>
+                <div class="item">
+                    <label for="balcao2">BALCÃO DE ATENDIMENTO SELECT DUO (ANTIGO)</label>
+                    <input type="checkbox" id="balcao2" onchange="mostrarInput('balcao2')">
+                    <input type="text" id="input-balcao2" placeholder="Digite algo" th:field="*{balcaoAtendimentoSelectDuo}">
+                </div>
+            </div>
+
+            <!-- BANCADA E BANQUETAS -->
+            <div id="bancada" class="category">
+                <h3>BANCADA E BANQUETAS</h3>
+                <div class="item">
+                    <label for="bancada1">BANCADA LOUNGE</label>
+                    <input type="checkbox" id="bancada1" onchange="mostrarInput('bancada1')">
+                    <input type="text" id="input-bancada1" placeholder="Digite algo" th:field="*{bancadaLounge}">
+                </div>
+                <div class="item">
+                    <label for="bancada2">BANQUETA COWORKING PRETA</label>
+                    <input type="checkbox" id="bancada2" onchange="mostrarInput('bancada2')">
+                    <input type="text" id="input-bancada2" placeholder="Digite algo" th:field="*{banquetaCoworkingPreta}">
+                </div>
+                <div class="item">
+                    <label for="bancada3">BANQUETA FUN PRETA</label>
+                    <input type="checkbox" id="bancada3" onchange="mostrarInput('bancada3')">
+                    <input type="text" id="input-bancada3" placeholder="Digite algo" th:field="*{banquetaFunPreta}">
+                </div>
+                <div class="item">
+                    <label for="bancada4">BANQUETA PIPFE ALBERFLEX</label>
+                    <input type="checkbox" id="bancada4" onchange="mostrarInput('bancada4')">
+                    <input type="text" id="input-bancada4" placeholder="Digite algo" th:field="*{banquetaPipfeAlberflex}">
+                </div>
+            </div>
+
+            <!-- BIOMBO -->
+            <div id="biombo" class="category">
+                <h3>BIOMBO</h3>
+                <div class="item">
+                    <label for="biombo1">BIOMBO ESPECIALISTA ARGILA</label>
+                    <input type="checkbox" id="biombo1" onchange="mostrarInput('biombo1')">
+                    <input type="text" id="input-biombo1" placeholder="Digite algo" th:field="*{biomboEspecialistaArgila}">
+                </div>
+                <div class="item">
+                    <label for="biombo2">BIOMBO ESPECIALISTA GRANDE OFICINAS</label>
+                    <input type="checkbox" id="biombo2" onchange="mostrarInput('biombo2')">
+                    <input type="text" id="input-biombo2" placeholder="Digite algo" th:field="*{biomboEspecialistaGrandeOficinas}">
+                </div>
+                <div class="item">
+                    <label for="biombo3">BIOMBO ESPECIALISTA PEQUENO OFICINAS</label>
+                    <input type="checkbox" id="biombo3" onchange="mostrarInput('biombo3')">
+                    <input type="text" id="input-biombo3" placeholder="Digite algo" th:field="*{biomboEspecialistaPequenoOficinas}">
+                </div>
+                <div class="item">
+                    <label for="biombo4">BIOMBO ESPECIALISTA SMART RED CINZA</label>
+                    <input type="checkbox" id="biombo4" onchange="mostrarInput('biombo4')">
+                    <input type="text" id="input-biombo4" placeholder="Digite algo" th:field="*{biomboEspecialistaSmartRedCinza}">
+                </div>
+                <div class="item">
+                    <label for="biombo5">BIOMBO ESPECIALITA NEODOTS BRANCO</label>
+                    <input type="checkbox" id="biombo5" onchange="mostrarInput('biombo5')">
+                    <input type="text" id="input-biombo5" placeholder="Digite algo" th:field="*{biomboEspecialistaNeodotsBranco}">
+                </div>
+                <div class="item">
+                    <label for="biombo6">BIOMBO GNS ARGILA</label>
+                    <input type="checkbox" id="biombo6" onchange="mostrarInput('biombo6')">
+                    <input type="text" id="input-biombo6" placeholder="Digite algo" th:field="*{biomboGnsArgila}">
+                </div>
+                <div class="item">
+                    <label for="biombo7">BIOMBO GNS OFICINAS</label>
+                    <input type="checkbox" id="biombo7" onchange="mostrarInput('biombo7')">
+                    <input type="text" id="input-biombo7" placeholder="Digite algo" th:field="*{biomboGnsOficinas}">
+                </div>
+                <div class="item">
+                    <label for="biombo8">BIOMBO GNS SMART RED CINZA</label>
+                    <input type="checkbox" id="biombo8" onchange="mostrarInput('biombo8')">
+                    <input type="text" id="input-biombo8" placeholder="Digite algo" th:field="*{biomboGnsSmartRedCinza}">
+                </div>
+            </div>
+
+            <!-- CADEIRAS -->
+            <div id="cadeiras" class="category">
+                <h3>CADEIRAS</h3>
+                <div class="item">
+                    <label for="cadeira1">CADEIRA DE RODAS</label>
+                    <input type="checkbox" id="cadeira1" onchange="mostrarInput('cadeira1')">
+                    <input type="text" id="input-cadeira1" placeholder="Digite algo" th:field="*{cadeiraDeRodas}">
+                </div>
+                <div class="item">
+                    <label for="cadeira2">CADEIRA DIÁLOGO CINZA OFICINAS CAVALLETI</label>
+                    <input type="checkbox" id="cadeira2" onchange="mostrarInput('cadeira2')">
+                    <input type="text" id="input-cadeira2" placeholder="Digite algo" th:field="*{cadeiraDialogoCinzaOficinasCavalleti}">
+                </div>
+                <div class="item">
+                    <label for="cadeira3">CADEIRA DIÁLOGO CINZA OFICINAS FLEXFORM</label>
+                    <input type="checkbox" id="cadeira3" onchange="mostrarInput('cadeira3')">
+                    <input type="text" id="input-cadeira3" placeholder="Digite algo" th:field="*{cadeiraDialogoCinzaOficinasFlexform}">
+                </div>
+                <div class="item">
+                    <label for="cadeira4">CADEIRA DIÁLOGO CINZA S/ PADRÃO</label>
+                    <input type="checkbox" id="cadeira4" onchange="mostrarInput('cadeira4')">
+                    <input type="text" id="input-cadeira4" placeholder="Digite algo" th:field="*{cadeiraDialogoCinzaSemPadrao}">
+                </div>
+                <div class="item">
+                    <label for="cadeira5">CADEIRA DIÁLOGO SMART RED</label>
+                    <input type="checkbox" id="cadeira5" onchange="mostrarInput('cadeira5')">
+                    <input type="text" id="input-cadeira5" placeholder="Digite algo" th:field="*{cadeiraDialogoSmartRed}">
+                </div>
+                <div class="item">
+                    <label for="cadeira6">CADEIRA ESTOFADO VERMELHA S/ PADRÃO</label>
+                    <input type="checkbox" id="cadeira6" onchange="mostrarInput('cadeira6')">
+                    <input type="text" id="input-cadeira6" placeholder="Digite algo" th:field="*{cadeiraEstofadoVermelhaSemPadrao}">
+                </div>
+                <div class="item">
+                    <label for="cadeira7">CADEIRA GERENTE PRETA</label>
+                    <input type="checkbox" id="cadeira7" onchange="mostrarInput('cadeira7')">
+                    <input type="text" id="input-cadeira7" placeholder="Digite algo" th:field="*{cadeiraGerentePreta}">
+                </div>
+                <div class="item">
+                    <label for="cadeira8">CADEIRA GERENTE SMART RED</label>
+                    <input type="checkbox" id="cadeira8" onchange="mostrarInput('cadeira8')">
+                    <input type="text" id="input-cadeira8" placeholder="Digite algo" th:field="*{cadeiraGerenteSmartRed}">
+                </div>
+                <div class="item">
+                    <label for="cadeira9">CADEIRA GERENTE VERMELHA</label>
+                    <input type="checkbox" id="cadeira9" onchange="mostrarInput('cadeira9')">
+                    <input type="text" id="input-cadeira9" placeholder="Digite algo" th:field="*{cadeiraGerenteVermelha}">
+                </div>
+                <div class="item">
+                    <label for="cadeira10">CADEIRA GIRATÓRIA</label>
+                    <input type="checkbox" id="cadeira10" onchange="mostrarInput('cadeira10')">
+                    <input type="text" id="input-cadeira10" placeholder="Digite algo" th:field="*{cadeiraGiratoria}">
+                </div>
+                <div class="item">
+                    <label for="cadeira11">CADEIRA PIPGA ALBERFLEX (COWORKING)</label>
+                    <input type="checkbox" id="cadeira11" onchange="mostrarInput('cadeira11')">
+                    <input type="text" id="input-cadeira11" placeholder="Digite algo" th:field="*{cadeiraPipgaAlberflexCoworking}">
+                </div>
+                <div class="item">
+                    <label for="cadeira12">CADEIRA PRETA S/ PADRÃO</label>
+                    <input type="checkbox" id="cadeira12" onchange="mostrarInput('cadeira12')">
+                    <input type="text" id="input-cadeira12" placeholder="Digite algo" th:field="*{cadeiraPretaSemPadrao}">
+                </div>
+                <div class="item">
+                    <label for="cadeira13">CADEIRA VALENTINA</label>
+                    <input type="checkbox" id="cadeira13" onchange="mostrarInput('cadeira13')">
+                    <input type="text" id="input-cadeira13" placeholder="Digite algo" th:field="*{cadeiraValentina}">
+                </div>
+            </div>
+
+            <!-- COFRES E CVI'S -->
+            <div id="cofres" class="category">
+                <h3>COFRES E CVI'S</h3>
+                <div class="item">
+                    <label for="cofre1">COFRE BOCA DE LOBO</label>
+                    <input type="checkbox" id="cofre1" onchange="mostrarInput('cofre1')">
+                    <input type="text" id="input-cofre1" placeholder="Digite algo" th:field="*{cofreBocaDeLobo}">
+                </div>
+                <div class="item">
+                    <label for="cvi1">CVI 1X1</label>
+                    <input type="checkbox" id="cvi1" onchange="mostrarInput('cvi1')">
+                    <input type="text" id="input-cvi1" placeholder="Digite algo" th:field="*{cvi1x1}">
+                </div>
+                <div class="item">
+                    <label for="cvi2">CVI 2X1</label>
+                    <input type="checkbox" id="cvi2" onchange="mostrarInput('cvi2')">
+                    <input type="text" id="input-cvi2" placeholder="Digite algo" th:field="*{cvi2x1}">
+                </div>
+                <div class="item">
+                    <label for="cvi3">CVI 3X1</label>
+                    <input type="checkbox" id="cvi3" onchange="mostrarInput('cvi3')">
+                    <input type="text" id="input-cvi3" placeholder="Digite algo" th:field="*{cvi3x1}">
+                </div>
+            </div>
+
+            <!-- DIVISÓRIA -->
+            <div id="divisoria" class="category">
+                <h3>DIVISÓRIA</h3>
+                <div class="item">
+                    <label for="divisoria1">DIVISÓRIA CAIXA ACRÍLICO VERMELHO</label>
+                    <input type="checkbox" id="divisoria1" onchange="mostrarInput('divisoria1')">
+                    <input type="text" id="input-divisoria1" placeholder="Digite algo" th:field="*{divisoriaCaixaAcrilicoVermelho}">
+                </div>
+            </div>
+
+            <!-- ESTANTE -->
+            <div id="estante" class="category">
+                <h3>ESTANTE</h3>
+                <div class="item">
+                    <label for="estante1">ESTANTE WORK CAFÉ PRETA E AMADEIRADA</label>
+                    <input type="checkbox" id="estante1" onchange="mostrarInput('estante1')">
+                    <input type="text" id="input-estante1" placeholder="Digite algo" th:field="*{estanteWorkCafePretaAmadeirada}">
+                </div>
+            </div>
+
+            <!-- FORRO -->
+            <div id="forro" class="category">
+                <h3>FORRO</h3>
+                <div class="item">
+                    <label for="forro1">FORRO RIPADO</label>
+                    <input type="checkbox" id="forro1" onchange="mostrarInput('forro1')">
+                    <input type="text" id="input-forro1" placeholder="Digite algo" th:field="*{forroRipado}">
+                </div>
+            </div>
+
+            <!-- FRAGMENTADORA -->
+            <div id="fragmentadora" class="category">
+                <h3>FRAGMENTADORA</h3>
+                <div class="item">
+                    <label for="fragmentadora1">FRAGMENTADORA</label>
+                    <input type="checkbox" id="fragmentadora1" onchange="mostrarInput('fragmentadora1')">
+                    <input type="text" id="input-fragmentadora1" placeholder="Digite algo" th:field="*{fragmentadora}">
+                </div>
+            </div>
+
+            <!-- FRIGOBAR -->
+            <div id="frigobar" class="category">
+                <h3>FRIGOBAR</h3>
+                <div class="item">
+                    <label for="frigobar1">FRIGOBAR</label>
+                    <input type="checkbox" id="frigobar1" onchange="mostrarInput('frigobar1')">
+                    <input type="text" id="input-frigobar1" placeholder="Digite algo" th:field="*{frigobar}">
+                </div>
+            </div>
+
+            <!-- GAVETEIRO -->
+            <div id="gaveteiro" class="category">
+                <h3>GAVETEIRO</h3>
+                <div class="item">
+                    <label for="gaveteiro1">GAVETEIRO</label>
+                    <input type="checkbox" id="gaveteiro1" onchange="mostrarInput('gaveteiro1')">
+                    <input type="text" id="input-gaveteiro1" placeholder="Digite algo" th:field="*{gaveteiro}">
+                </div>
+            </div>
+
+            <!-- GUICHÊ -->
+            <div id="guiche" class="category">
+                <h3>GUICHÊ</h3>
+                <div class="item">
+                    <label for="guiche1">GUICHÊ CAIXA</label>
+                    <input type="checkbox" id="guiche1" onchange="mostrarInput('guiche1')">
+                    <input type="text" id="input-guiche1" placeholder="Digite algo" th:field="*{guicheCaixa}">
+                </div>
+                <div class="item">
+                    <label for="guiche2">GUICHÊ CAIXA PNE</label>
+                    <input type="checkbox" id="guiche2" onchange="mostrarInput('guiche2')">
+                    <input type="text" id="input-guiche2" placeholder="Digite algo" th:field="*{guicheCaixaPne}">
+                </div>
+            </div>
+
+            <!-- LIXEIRA -->
+            <div id="lixeira" class="category">
+                <h3>LIXEIRA</h3>
+                <div class="item">
+                    <label for="lixeira1">LIXEIRA - CAFÉ</label>
+                    <input type="checkbox" id="lixeira1" onchange="mostrarInput('lixeira1')">
+                    <input type="text" id="input-lixeira1" placeholder="Digite algo" th:field="*{lixeiraCafe}">
+                </div>
+            </div>
+
+            <!-- LOCKER -->
+            <div id="locker" class="category">
+                <h3>LOCKER</h3>
+                <div class="item">
+                    <label for="locker1">LOCKER</label>
+                    <input type="checkbox" id="locker1" onchange="mostrarInput('locker1')">
+                    <input type="text" id="input-locker1" placeholder="Digite algo" th:field="*{locker}">
+                </div>
+            </div>
+
+            <!-- LONGARINA -->
+            <div id="longarina" class="category">
+                <h3>LONGARINA</h3>
+                <div class="item">
+                    <label for="longarina1">LONGARINA CINZA</label>
+                    <input type="checkbox" id="longarina1" onchange="mostrarInput('longarina1')">
+                    <input type="text" id="input-longarina1" placeholder="Digite algo" th:field="*{longarinaCinza}">
+                </div>
+                <div class="item">
+                    <label for="longarina2">LONGARINA COM OBESO CINZA SMART RED</label>
+                    <input type="checkbox" id="longarina2" onchange="mostrarInput('longarina2')">
+                    <input type="text" id="input-longarina2" placeholder="Digite algo" th:field="*{longarinaComObesoCinzaSmartRed}">
+                </div>
+                <div class="item">
+                    <label for="longarina3">LONGARINA VERMELHA</label>
+                    <input type="checkbox" id="longarina3" onchange="mostrarInput('longarina3')">
+                    <input type="text" id="input-longarina3" placeholder="Digite algo" th:field="*{longarinaVermelha}">
+                </div>
+            </div>
+
+            <!-- LUMINÁRIA -->
+            <div id="luminaria" class="category">
+                <h3>LUMINÁRIA</h3>
+                <div class="item">
+                    <label for="luminaria1">LUMINÁRIA DE TRILHO</label>
+                    <input type="checkbox" id="luminaria1" onchange="mostrarInput('luminaria1')">
+                    <input type="text" id="input-luminaria1" placeholder="Digite algo" th:field="*{luminariaDeTrilho}">
+                </div>
+                <div class="item">
+                    <label for="luminaria2">LUMINÁRIA PENDENTE WKC-LUM-11</label>
+                    <input type="checkbox" id="luminaria2" onchange="mostrarInput('luminaria2')">
+                    <input type="text" id="input-luminaria2" placeholder="Digite algo" th:field="*{luminariaPendenteWkcLum11}">
+                </div>
+                <div class="item">
+                    <label for="luminaria3">LUMINÁRIA PENDENTE WKC-LUM-12</label>
+                    <input type="checkbox" id="luminaria3" onchange="mostrarInput('luminaria3')">
+                    <input type="text" id="input-luminaria3" placeholder="Digite algo" th:field="*{luminariaPendenteWkcLum12}">
+                </div>
+            </div>
+
+            <!-- LUSTRE -->
+            <div id="lustre" class="category">
+                <h3>LUSTRE</h3>
+                <div class="item">
+                    <label for="lustre1">LUSTRE SOLITÁRIO</label>
+                    <input type="checkbox" id="lustre1" onchange="mostrarInput('lustre1')">
+                    <input type="text" id="input-lustre1" placeholder="Digite algo" th:field="*{lustreSolitaria}">
+                </div>
+            </div>
+
+            <!-- MESA -->
+            <div id="mesa" class="category">
+                <h3>MESA</h3>
+                <div class="item">
+                    <label for="mesa1">MESA - REUNIÃO ABERTA</label>
+                    <input type="checkbox" id="mesa1" onchange="mostrarInput('mesa1')">
+                    <input type="text" id="input-mesa1" placeholder="Digite algo" th:field="*{mesaReuniaoAberta}">
+                </div>
+                <div class="item">
+                    <label for="mesa2">MESA BISTRÔ AMADEIRADA</label>
+                    <input type="checkbox" id="mesa2" onchange="mostrarInput('mesa2')">
+                    <input type="text" id="input-mesa2" placeholder="Digite algo" th:field="*{mesaBistraoAmadeirada}">
+                </div>
+                <div class="item">
+                    <label for="mesa3">MESA CAFÉ PRETA</label>
+                    <input type="checkbox" id="mesa3" onchange="mostrarInput('mesa3')">
+                    <input type="text" id="input-mesa3" placeholder="Digite algo" th:field="*{mesaCafePreta}">
+                </div>
+                <div class="item">
+                    <label for="mesa4">MESA COWORKING</label>
+                    <input type="checkbox" id="mesa4" onchange="mostrarInput('mesa4')">
+                    <input type="text" id="input-mesa4" placeholder="Digite algo" th:field="*{mesaCoworking}">
+                </div>
+                <div class="item">
+                    <label for="mesa5">MESA DE CENTRO CANNES PRETA</label>
+                    <input type="checkbox" id="mesa5" onchange="mostrarInput('mesa5')">
+                    <input type="text" id="input-mesa5" placeholder="Digite algo" th:field="*{mesaDeCentroCannesPreta}">
+                </div>
+                <div class="item">
+                    <label for="mesa6">MESA DE REUNIÃO GRANDE QUADRADA</label>
+                    <input type="checkbox" id="mesa6" onchange="mostrarInput('mesa6')">
+                    <input type="text" id="input-mesa6" placeholder="Digite algo" th:field="*{mesaDeReuniaoGrandeQuadrada}">
+                </div>
+                <div class="item">
+                    <label for="mesa7">MESA DE REUNIÃO QUADRADA OFICINAS</label>
+                    <input type="checkbox" id="mesa7" onchange="mostrarInput('mesa7')">
+                    <input type="text" id="input-mesa7" placeholder="Digite algo" th:field="*{mesaDeReuniaoQuadradaOficinas}">
+                </div>
+                <div class="item">
+                    <label for="mesa8">MESA ESPECIALISTA OFICINAS DIREITA</label>
+                    <input type="checkbox" id="mesa8" onchange="mostrarInput('mesa8')">
+                    <input type="text" id="input-mesa8" placeholder="Digite algo" th:field="*{mesaEspecialistaOficinasDireita}">
+                </div>
+                <div class="item">
+                    <label for="mesa9">MESA ESPECIALISTA SMART RED DIREITA</label>
+                    <input type="checkbox" id="mesa9" onchange="mostrarInput('mesa9')">
+                    <input type="text" id="input-mesa9" placeholder="Digite algo" th:field="*{mesaEspecialistaSmartRedDireita}">
+                </div>
+                <div class="item">
+                    <label for="mesa10">MESA ESPECIALISTA SMART RED ESQUERDA</label>
+                    <input type="checkbox" id="mesa10" onchange="mostrarInput('mesa10')">
+                    <input type="text" id="input-mesa10" placeholder="Digite algo" th:field="*{mesaEspecialistaSmartRedEsquerda}">
+                </div>
+                <div class="item">
+                    <label for="mesa11">MESA GNS OFICINAS DIREITA</label>
+                    <input type="checkbox" id="mesa11" onchange="mostrarInput('mesa11')">
+                    <input type="text" id="input-mesa11" placeholder="Digite algo" th:field="*{mesaGnsOficinasDireita}">
+                </div>
+                <div class="item">
+                    <label for="mesa12">MESA GNS SMART RED DIREITA</label>
+                    <input type="checkbox" id="mesa12" onchange="mostrarInput('mesa12')">
+                    <input type="text" id="input-mesa12" placeholder="Digite algo" th:field="*{mesaGnsSmartRedDireita}">
+                </div>
+                <div class="item">
+                    <label for="mesa13">MESA LATERAL L'AQUILA</label>
+                    <input type="checkbox" id="mesa13" onchange="mostrarInput('mesa13')">
+                    <input type="text" id="input-mesa13" placeholder="Digite algo" th:field="*{mesaLateralLaquila}">
+                </div>
+                <div class="item">
+                    <label for="mesa14">MESA REDONDA SAARINEN</label>
+                    <input type="checkbox" id="mesa14" onchange="mostrarInput('mesa14')">
+                    <input type="text" id="input-mesa14" placeholder="Digite algo" th:field="*{mesaRedondaSaarinen}">
+                </div>
+                <div class="item">
+                    <label for="mesa15">MESA RETAGUARDA ARGILA</label>
+                    <input type="checkbox" id="mesa15" onchange="mostrarInput('mesa15')">
+                    <input type="text" id="input-mesa15" placeholder="Digite algo" th:field="*{mesaRetaguardaArgila}">
+                </div>
+                <div class="item">
+                    <label for="mesa16">MESA RETAGUARDA OFICINAS</label>
+                    <input type="checkbox" id="mesa16" onchange="mostrarInput('mesa16')">
+                    <input type="text" id="input-mesa16" placeholder="Digite algo" th:field="*{mesaRetaguardaOficinas}">
+                </div>
+                <div class="item">
+                    <label for="mesa17">MESA REUNIÃO REDONDA</label>
+                    <input type="checkbox" id="mesa17" onchange="mostrarInput('mesa17')">
+                    <input type="text" id="input-mesa17" placeholder="Digite algo" th:field="*{mesaReuniaoRedonda}">
+                </div>
+                <div class="item">
+                    <label for="mesa18">MESA SALA AVANÇAR</label>
+                    <input type="checkbox" id="mesa18" onchange="mostrarInput('mesa18')">
+                    <input type="text" id="input-mesa18" placeholder="Digite algo" th:field="*{mesaSalaAvancar}">
+                </div>
+                <div class="item">
+                    <label for="mesa19">MESA SELECT</label>
+                    <input type="checkbox" id="mesa19" onchange="mostrarInput('mesa19')">
+                    <input type="text" id="input-mesa19" placeholder="Digite algo" th:field="*{mesaSelect}">
+                </div>
+            </div>
+
+            <!-- MICROONDAS -->
+            <div id="microondas" class="category">
+                <h3>MICROONDAS</h3>
+                <div class="item">
+                    <label for="microondas1">MICROONDAS</label>
+                    <input type="checkbox" id="microondas1" onchange="mostrarInput('microondas1')">
+                    <input type="text" id="input-microondas1" placeholder="Digite algo" th:field="*{microondas}">
+                </div>
+            </div>
+
+            <!-- MOLDURAS -->
+            <div id="molduras" class="category">
+                <h3>MOLDURAS</h3>
+                <div class="item">
+                    <label for="moldura1">MOLDURA TARIFÁRIO 32'</label>
+                    <input type="checkbox" id="moldura1" onchange="mostrarInput('moldura1')">
+                    <input type="text" id="input-moldura1" placeholder="Digite algo" th:field="*{molduraTarifario32}">
+                </div>
+                <div class="item">
+                    <label for="moldura2">MOLDURA TARIFÁRIO 40'</label>
+                    <input type="checkbox" id="moldura2" onchange="mostrarInput('moldura2')">
+                    <input type="text" id="input-moldura2" placeholder="Digite algo" th:field="*{molduraTarifario40}">
+                </div>
+                <div class="item">
+                    <label for="moldura3">MOLDURA TARIFÁRIO 50'</label>
+                    <input type="checkbox" id="moldura3" onchange="mostrarInput('moldura3')">
+                    <input type="text" id="input-moldura3" placeholder="Digite algo" th:field="*{molduraTarifario50}">
+                </div>
+                <div class="item">
+                    <label for="moldura4">MOLDURA TARIFÁRIO 65'</label>
+                    <input type="checkbox" id="moldura4" onchange="mostrarInput('moldura4')">
+                    <input type="text" id="input-moldura4" placeholder="Digite algo" th:field="*{molduraTarifario65}">
+                </div>
+            </div>
+
+            <!-- POLTRONAS -->
+            <div id="poltronas" class="category">
+                <h3>POLTRONAS</h3>
+                <div class="item">
+                    <label for="poltrona1">POLTRONA I COURO CINZA CLARO</label>
+                    <input type="checkbox" id="poltrona1" onchange="mostrarInput('poltrona1')">
+                    <input type="text" id="input-poltrona1" placeholder="Digite algo" th:field="*{poltronaICouroCinzaClaro}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona2" 2>POLTRONA I COURO CINZA ESCURO</label>
+                    <input type="checkbox" id="poltrona2" onchange="mostrarInput('poltrona2')">
+                    <input type="text" id="input-poltrona2" placeholder="Digite algo" th:field="*{poltronaICouroCinzaEscuro}">
+                </div>
+                <div class="item">
+                    <label for="poltrona3">POLTRONA I TECIDO CINZA ESCURO</label>
+                    <input type="checkbox" id="poltrona3" onchange="mostrarInput('poltrona3')">
+                    <input type="text" id="input-poltrona3" placeholder="Digite algo" th:field="*{poltronaITecidoCinzaEscuro}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona4">POLTRONA I TECIDO VERMELHO</label>
+                    <input type="checkbox" id="poltrona4" onchange="mostrarInput('poltrona4')">
+                    <input type="text" id="input-poltrona4" placeholder="Digite algo" th:field="*{poltronaITecidoVermelho}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona5">POLTRONA L COURO CINZA CLARO</label>
+                    <input type="checkbox" id="poltrona5" onchange="mostrarInput('poltrona5')">
+                    <input type="text" id="input-poltrona5" placeholder="Digite algo" th:field="*{poltronaLCouroCinzaClaro}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona6">POLTRONA L COURO CINZA ESCURO</label>
+                    <input type="checkbox" id="poltrona6" onchange="mostrarInput('poltrona6')">
+                    <input type="text" id="input-poltrona6" placeholder="Digite algo" th:field="*{poltronaLCouroCinzaEscuro}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona6">POLTRONA L TECIDO CINZA ESCURO</label>
+                    <input type="checkbox" id="poltrona6" onchange="mostrarInput('poltrona6')">
+                    <input type="text" id="input-poltrona6" placeholder="Digite algo" th:field="*{poltronaLTecidoCinzaEscuro}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona7">POLTRONA L TECIDO VERMELHO</label>
+                    <input type="checkbox" id="poltrona7" onchange="mostrarInput('poltrona7')">
+                    <input type="text" id="input-poltrona7" placeholder="Digite algo" th:field="*{poltronaLTecidoVermelho}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona9">POLTRONA MARIA</label>
+                    <input type="checkbox" id="poltrona9" onchange="mostrarInput('poltrona9')">
+                    <input type="text" id="input-poltrona9" placeholder="Digite algo" th:field="*{poltronaMaria}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona10">POLTRONA PRETA</label>
+                    <input type="checkbox" id="poltrona10" onchange="mostrarInput('poltrona10')">
+                    <input type="text" id="input-poltrona10" placeholder="Digite algo" th:field="*{poltronaPreta}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona11">POLTRONA SUITE MARROM SELECT</label>
+                    <input type="checkbox" id="poltrona11" onchange="mostrarInput('poltrona11')">
+                    <input type="text" id="input-poltrona11" placeholder="Digite algo" th:field="*{poltronaSuiteMarromSelect}">
+                </div>
+
+                <div class="item">
+                    <label for="poltrona12">POLTRONA VERMELHA SELECT ( NINA )</label>
+                    <input type="checkbox" id="poltrona12" onchange="mostrarInput('poltrona12')">
+                    <input type="text" id="input-poltrona12" placeholder="Digite algo" th:field="*{poltronaVermelhaSelectNina}">
+                </div>
+
+
+                <!-- PUFFS -->
+                <div id="puffs" class="category">
+                    <h3>PUFFS</h3>
+                    <div class="item">
+                        <label for="puff1">PUFF QUADRADO COURO CINZA CLARO</label>
+                        <input type="checkbox" id="puff1" onchange="mostrarInput('puff1')">
+                        <input type="text" id="input-puff1" placeholder="Digite algo" th:field="*{puffQuadradoCouroCinzaClaro}">
+                    </div>
+                    <div class="item">
+                        <label for="puff2">PUFF QUADRADO COURO CINZA ESCURO</label>
+                        <input type="checkbox" id="puff2" onchange="mostrarInput('puff2')">
+                        <input type="text" id="input-puff2" placeholder="Digite algo" th:field="*{puffQuadradoCouroCinzaEscuro}">
+                    </div>
+
+                    <div class="item">
+                        <label for="puff3">PUFF REDONDO BEGE</label>
+                        <input type="checkbox" id="puff3" onchange="mostrarInput('puff3')">
+                        <input type="text" id="input-puff3" placeholder="Digite algo" th:field="*{puffRedondoBege}">
+                    </div>
+
+                    <div class="item">
+                        <label for="puff4">PUFF REDONDO CINZA CLARO</label>
+                        <input type="checkbox" id="puff4" onchange="mostrarInput('puff4')">
+                        <input type="text" id="input-puff4" placeholder="Digite algo" th:field="*{puffRedondoCinzaClaro}">
+                    </div>
+
+                    <div class="item">
+                        <label for="puff5">PUFF REDONDO CINZA ESCURO</label>
+                        <input type="checkbox" id="puff5" onchange="mostrarInput('puff5')">
+                        <input type="text" id="input-puff5" placeholder="Digite algo" th:field="*{puffRedondoCinzaEscuro}">
+                    </div>
+
+                    <div class="item">
+                        <label for="puff6">PUFF REDONDO VERMELHO</label>
+                        <input type="checkbox" id="puff6" onchange="mostrarInput('puff6')">
+                        <input type="text" id="input-puff6" placeholder="Digite algo" th:field="*{puffRedondoVermelho}">
+                    </div>
+
+                </div>
+
+                <!-- RACKS E QUADROS -->
+                <div id="racksequadros" class="category">
+                    <h3>RACKS E QUADROS</h3>
+                    <div class="item">
+                        <label for="racksequadros1">QUADRO MISSÃO E CULTURA</label>
+                        <input type="checkbox" id="racksequadros1" onchange="mostrarInput('racksequadros1')">
+                        <input type="text" id="input-racksequadros1" placeholder="Digite algo" th:field="*{quadroMissaoECultura}">
+                    </div>
+                    <div class="item">
+                        <label for="racksequadros2">RACK</label>
+                        <input type="checkbox" id="racksequadros2" onchange="mostrarInput('racksequadros2')">
+                        <input type="text" id="input-racksequadros2" placeholder="Digite algo" th:field="*{rack}">
+                    </div>
+                </div>
+
+                <!-- SOFAS -->
+                <div id="sofas" class="category">
+                    <h3>SOFAS</h3>
+                    <div class="item">
+                        <label for="sofa1">SOFÀ LINA</label>
+                        <input type="checkbox" id="sofa1" onchange="mostrarInput('sofa1')">
+                        <input type="text" id="input-sofa1" placeholder="Digite algo" th:field="*{sofaLina}">
+                    </div>
+                </div>
+
+                <!-- TAPETE -->
+                <div id="tapetes" class="category">
+                    <h3>TAPETES</h3>
+                    <div class="item">
+                        <label for="tapete1">TAPETE SELECT</label>
+                        <input type="checkbox" id="tapete1" onchange="mostrarInput('tapete1')">
+                        <input type="text" id="input-tapete1" placeholder="Digite algo" th:field="*{tapeteSelect}">
+                    </div>
+                </div>
+
+                <!-- TV -->
+                <div id="tvs" class="category">
+                    <h3>TVS</h3>
+                    <div class="item">
+                        <label for="tv1">TV 26'</label>
+                        <input type="checkbox" id="tv1" onchange="mostrarInput('tv1')">
+                        <input type="text" id="input-tv1" placeholder="Digite algo" th:field="*{tv26}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv2">TV 32'</label>
+                        <input type="checkbox" id="tv2" onchange="mostrarInput('tv2')">
+                        <input type="text" id="input-tv2" placeholder="Digite algo" th:field="*{tv32}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv3">TV 40'</label>
+                        <input type="checkbox" id="tv3" onchange="mostrarInput('tv3')">
+                        <input type="text" id="input-tv3" placeholder="Digite algo" th:field="*{tv40}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv4">TV 43'</label>
+                        <input type="checkbox" id="tv4" onchange="mostrarInput('tv4')">
+                        <input type="text" id="input-tv4" placeholder="Digite algo" th:field="*{tv43}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv5">TV 50'</label>
+                        <input type="checkbox" id="tv5" onchange="mostrarInput('tv5')">
+                        <input type="text" id="input-tv5" placeholder="Digite algo" th:field="*{tv50}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv6">TV 65'</label>
+                        <input type="checkbox" id="tv6" onchange="mostrarInput('tv6')">
+                        <input type="text" id="input-tv6" placeholder="Digite algo" th:field="*{tv65}">
+                    </div>
+
+                    <div class="item">
+                        <label for="tv7">TV 75'</label>
+                        <input type="checkbox" id="tv7" onchange="mostrarInput('tv7')">
+                        <input type="text" id="input-tv7" placeholder="Digite algo" th:field="*{tv75}">
+                    </div>
+
+                    <button type="submit">Pedir</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</form>
+
+    <script>
+        function mostrarInput(id) {
+            const checkbox = document.getElementById(id);
+            const inputTexto = document.getElementById(`input-${id}`);
+
+            if (checkbox.checked) {
+                inputTexto.style.display = 'inline-block';
+            } else {
+                inputTexto.style.display = 'none';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
