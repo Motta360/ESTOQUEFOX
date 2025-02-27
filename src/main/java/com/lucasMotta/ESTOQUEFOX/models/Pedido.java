@@ -989,159 +989,164 @@ public class Pedido {
 	
 	@Override
 	public String toString() {
-	    StringBuilder sb = new StringBuilder();
-
-	    sb.append("Agencia: ").append(agencia).append("<br>");
-	    sb.append("Gestor Santander: ").append(gestorSTD).append("<br>");
-	    sb.append("Gestor Responsável: ").append(gerenciadora).append("<br>");
-	    sb.append("Fornecedora que acessará o estoque: ").append(fornecedor).append("<br>");
-	    sb.append("Data prevista de acesso ao Estoque: ").append(data).append("<br>");
-	    sb.append("Entrada ou Saída: ");
-	    if(entrada.equalsIgnoreCase("entrada")) {
-	    	sb.append("entrada").append("<br>");
-	    }else {
-	    	sb.append("saida").append("<br>");
-	    }
-	    sb.append("Email: ").append(email).append("<br>");
-
-	    if (aparadorDeEnvelope != 0) sb.append("aparadorDeEnvelope: ").append(aparadorDeEnvelope).append("<br>");
-
-	    if (armarioBaixoOficinas != 0) sb.append("armarioBaixoOficinas: ").append(armarioBaixoOficinas).append("<br>");
-	    if (armarioBaixoSmartRed != 0) sb.append("armarioBaixoSmartRed: ").append(armarioBaixoSmartRed).append("<br>");
-	    if (armarioImpressora != 0) sb.append("armarioImpressora: ").append(armarioImpressora).append("<br>");
-	    if (armarioImpressoraWorkCafe != 0) sb.append("armarioImpressoraWorkCafe: ").append(armarioImpressoraWorkCafe).append("<br>");
-
-	    if (balcaoCoworking != 0) sb.append("balcaoCoworking: ").append(balcaoCoworking).append("<br>");
-	    if (balcaoAtendimentoSelectDuo != 0) sb.append("balcaoAtendimentoSelectDuo: ").append(balcaoAtendimentoSelectDuo).append("<br>");
-
-	    if (bancadaLounge != 0) sb.append("bancadaLounge: ").append(bancadaLounge).append("<br>");
-	    if (banquetaCoworkingPreta != 0) sb.append("banquetaCoworkingPreta: ").append(banquetaCoworkingPreta).append("<br>");
-	    if (banquetaFunPreta != 0) sb.append("banquetaFunPreta: ").append(banquetaFunPreta).append("<br>");
-	    if (banquetaPipfeAlberflex != 0) sb.append("banquetaPipfeAlberflex: ").append(banquetaPipfeAlberflex).append("<br>");
-
-	    if (biomboEspecialistaArgila != 0) sb.append("biomboEspecialistaArgila: ").append(biomboEspecialistaArgila).append("<br>");
-	    if (biomboEspecialistaGrandeOficinas != 0) sb.append("biomboEspecialistaGrandeOficinas: ").append(biomboEspecialistaGrandeOficinas).append("<br>");
-	    if (biomboEspecialistaPequenoOficinas != 0) sb.append("biomboEspecialistaPequenoOficinas: ").append(biomboEspecialistaPequenoOficinas).append("<br>");
-	    if (biomboEspecialistaSmartRedCinza != 0) sb.append("biomboEspecialistaSmartRedCinza: ").append(biomboEspecialistaSmartRedCinza).append("<br>");
-	    if (biomboEspecialistaNeodotsBranco != 0) sb.append("biomboEspecialistaNeodotsBranco: ").append(biomboEspecialistaNeodotsBranco).append("<br>");
-	    if (biomboGnsArgila != 0) sb.append("biomboGnsArgila: ").append(biomboGnsArgila).append("<br>");
-	    if (biomboGnsOficinas != 0) sb.append("biomboGnsOficinas: ").append(biomboGnsOficinas).append("<br>");
-	    if (biomboGnsSmartRedCinza != 0) sb.append("biomboGnsSmartRedCinza: ").append(biomboGnsSmartRedCinza).append("<br>");
-
-	    if (cadeiraDeRodas != 0) sb.append("cadeiraDeRodas: ").append(cadeiraDeRodas).append("<br>");
-	    if (cadeiraDialogoCinzaOficinasCavalleti != 0) sb.append("cadeiraDialogoCinzaOficinasCavalleti: ").append(cadeiraDialogoCinzaOficinasCavalleti).append("<br>");
-	    if (cadeiraDialogoCinzaOficinasFlexform != 0) sb.append("cadeiraDialogoCinzaOficinasFlexform: ").append(cadeiraDialogoCinzaOficinasFlexform).append("<br>");
-	    if (cadeiraDialogoCinzaSemPadrao != 0) sb.append("cadeiraDialogoCinzaSemPadrao: ").append(cadeiraDialogoCinzaSemPadrao).append("<br>");
-	    if (cadeiraDialogoSmartRed != 0) sb.append("cadeiraDialogoSmartRed: ").append(cadeiraDialogoSmartRed).append("<br>");
-	    if (cadeiraEstofadoVermelhaSemPadrao != 0) sb.append("cadeiraEstofadoVermelhaSemPadrao: ").append(cadeiraEstofadoVermelhaSemPadrao).append("<br>");
-	    if (cadeiraGerentePreta != 0) sb.append("cadeiraGerentePreta: ").append(cadeiraGerentePreta).append("<br>");
-	    if (cadeiraGerenteSmartRed != 0) sb.append("cadeiraGerenteSmartRed: ").append(cadeiraGerenteSmartRed).append("<br>");
-	    if (cadeiraGerenteVermelha != 0) sb.append("cadeiraGerenteVermelha: ").append(cadeiraGerenteVermelha).append("<br>");
-	    if (cadeiraGiratoria != 0) sb.append("cadeiraGiratoria: ").append(cadeiraGiratoria).append("<br>");
-	    if (cadeiraPipgaAlberflexCoworking != 0) sb.append("cadeiraPipgaAlberflexCoworking: ").append(cadeiraPipgaAlberflexCoworking).append("<br>");
-	    if (cadeiraPretaSemPadrao != 0) sb.append("cadeiraPretaSemPadrao: ").append(cadeiraPretaSemPadrao).append("<br>");
-	    if (cadeiraValentina != 0) sb.append("cadeiraValentina: ").append(cadeiraValentina).append("<br>");
-
-	    if (cofreBocaDeLobo != 0) sb.append("cofreBocaDeLobo: ").append(cofreBocaDeLobo).append("<br>");
-	    if (cvi1x1 != 0) sb.append("cvi1x1: ").append(cvi1x1).append("<br>");
-	    if (cvi2x1 != 0) sb.append("cvi2x1: ").append(cvi2x1).append("<br>");
-	    if (cvi3x1 != 0) sb.append("cvi3x1: ").append(cvi3x1).append("<br>");
-
-	    if (divisoriaCaixaAcrilicoVermelho != 0) sb.append("divisoriaCaixaAcrilicoVermelho: ").append(divisoriaCaixaAcrilicoVermelho).append("<br>");
-
-	    if (estanteWorkCafePretaAmadeirada != 0) sb.append("estanteWorkCafePretaAmadeirada: ").append(estanteWorkCafePretaAmadeirada).append("<br>");
-
-	    if (forroRipado != 0) sb.append("forroRipado: ").append(forroRipado).append("<br>");
-
-	    if (fragmentadora != 0) sb.append("fragmentadora: ").append(fragmentadora).append("<br>");
-
-	    if (frigobar != 0) sb.append("frigobar: ").append(frigobar).append("<br>");
-
-	    if (gaveteiro != 0) sb.append("gaveteiro: ").append(gaveteiro).append("<br>");
-
-	    if (guicheCaixa != 0) sb.append("guicheCaixa: ").append(guicheCaixa).append("<br>");
-	    if (guicheCaixaPne != 0) sb.append("guicheCaixaPne: ").append(guicheCaixaPne).append("<br>");
-
-	    if (lixeiraCafe != 0) sb.append("lixeiraCafe: ").append(lixeiraCafe).append("<br>");
-
-	    if (locker != 0) sb.append("locker: ").append(locker).append("<br>");
-
-	    if (longarinaCinza != 0) sb.append("longarinaCinza: ").append(longarinaCinza).append("<br>");
-	    if (longarinaComObesoCinzaSmartRed != 0) sb.append("longarinaComObesoCinzaSmartRed: ").append(longarinaComObesoCinzaSmartRed).append("<br>");
-	    if (longarinaVermelha != 0) sb.append("longarinaVermelha: ").append(longarinaVermelha).append("<br>");
-
-	    if (luminariaDeTrilho != 0) sb.append("luminariaDeTrilho: ").append(luminariaDeTrilho).append("<br>");
-	    if (luminariaPendenteWkcLum11 != 0) sb.append("luminariaPendenteWkcLum11: ").append(luminariaPendenteWkcLum11).append("<br>");
-	    if (luminariaPendenteWkcLum12 != 0) sb.append("luminariaPendenteWkcLum12: ").append(luminariaPendenteWkcLum12).append("<br>");
-
-	    if (lustreSolitaria != 0) sb.append("lustreSolitaria: ").append(lustreSolitaria).append("<br>");
-
-	    if (mesaReuniaoAberta != 0) sb.append("mesaReuniaoAberta: ").append(mesaReuniaoAberta).append("<br>");
-	    if (mesaBistraoAmadeirada != 0) sb.append("mesaBistraoAmadeirada: ").append(mesaBistraoAmadeirada).append("<br>");
-	    if (mesaCafePreta != 0) sb.append("mesaCafePreta: ").append(mesaCafePreta).append("<br>");
-	    if (mesaCoworking != 0) sb.append("mesaCoworking: ").append(mesaCoworking).append("<br>");
-	    if (mesaDeCentroCannesPreta != 0) sb.append("mesaDeCentroCannesPreta: ").append(mesaDeCentroCannesPreta).append("<br>");
-	    if (mesaDeReuniaoGrandeQuadrada != 0) sb.append("mesaDeReuniaoGrandeQuadrada: ").append(mesaDeReuniaoGrandeQuadrada).append("<br>");
-	    if (mesaDeReuniaoQuadradaOficinas != 0) sb.append("mesaDeReuniaoQuadradaOficinas: ").append(mesaDeReuniaoQuadradaOficinas).append("<br>");
-	    if (mesaEspecialistaOficinasDireita != 0) sb.append("mesaEspecialistaOficinasDireita: ").append(mesaEspecialistaOficinasDireita).append("<br>");
-	    if (mesaEspecialistaSmartRedDireita != 0) sb.append("mesaEspecialistaSmartRedDireita: ").append(mesaEspecialistaSmartRedDireita).append("<br>");
-	    if (mesaEspecialistaSmartRedEsquerda != 0) sb.append("mesaEspecialistaSmartRedEsquerda: ").append(mesaEspecialistaSmartRedEsquerda).append("<br>");
-	    if (mesaGnsOficinasDireita != 0) sb.append("mesaGnsOficinasDireita: ").append(mesaGnsOficinasDireita).append("<br>");
-	    if (mesaGnsSmartRedDireita != 0) sb.append("mesaGnsSmartRedDireita: ").append(mesaGnsSmartRedDireita).append("<br>");
-	    if (mesaLateralLaquila != 0) sb.append("mesaLateralLaquila: ").append(mesaLateralLaquila).append("<br>");
-	    if (mesaRedondaSaarinen != 0) sb.append("mesaRedondaSaarinen: ").append(mesaRedondaSaarinen).append("<br>");
-	    if (mesaRetaguardaArgila != 0) sb.append("mesaRetaguardaArgila: ").append(mesaRetaguardaArgila).append("<br>");
-	    if (mesaRetaguardaOficinas != 0) sb.append("mesaRetaguardaOficinas: ").append(mesaRetaguardaOficinas).append("<br>");
-	    if (mesaReuniaoRedonda != 0) sb.append("mesaReuniaoRedonda: ").append(mesaReuniaoRedonda).append("<br>");
-	    if (mesaSalaAvancar != 0) sb.append("mesaSalaAvancar: ").append(mesaSalaAvancar).append("<br>");
-	    if (mesaSelect != 0) sb.append("mesaSelect: ").append(mesaSelect).append("<br>");
-
-	    if (microondas != 0) sb.append("microondas: ").append(microondas).append("<br>");
-
-	    if (molduraTarifario32 != 0) sb.append("molduraTarifario32: ").append(molduraTarifario32).append("<br>");
-	    if (molduraTarifario40 != 0) sb.append("molduraTarifario40: ").append(molduraTarifario40).append("<br>");
-	    if (molduraTarifario50 != 0) sb.append("molduraTarifario50: ").append(molduraTarifario50).append("<br>");
-	    if (molduraTarifario65 != 0) sb.append("molduraTarifario65: ").append(molduraTarifario65).append("<br>");
-
-	    if (poltronaICouroCinzaClaro != 0) sb.append("poltronaICouroCinzaClaro: ").append(poltronaICouroCinzaClaro).append("<br>");
-	    if (poltronaICouroCinzaEscuro != 0) sb.append("poltronaICouroCinzaEscuro: ").append(poltronaICouroCinzaEscuro).append("<br>");
-	    if (poltronaITecidoCinzaEscuro != 0) sb.append("poltronaITecidoCinzaEscuro: ").append(poltronaITecidoCinzaEscuro).append("<br>");
+		StringBuilder sb = new StringBuilder();
+	
+		sb.append("Agencia: ").append(agencia).append("<br>");
+		sb.append("Gestor Santander: ").append(gestorSTD).append("<br>");
+		sb.append("Gestor Responsável: ").append(gerenciadora).append("<br>");
+		sb.append("Fornecedora que acessará o estoque: ").append(fornecedor).append("<br>");
+		sb.append("Data prevista de acesso ao Estoque: ").append(data).append("<br>");
+		sb.append("Entrada ou Saída: ");
+		if (entrada.equalsIgnoreCase("entrada")) {
+			sb.append("entrada").append("<br>");
+		} else {
+			sb.append("saida").append("<br>");
+		}
+		sb.append("Email: ").append(email).append("<br>");
+	
+		// Verifica e adiciona cada variável formatada
+		if (aparadorDeEnvelope != 0) sb.append(formatarNome("aparadorDeEnvelope")).append(": ").append(aparadorDeEnvelope).append("<br>");
+		if (armarioBaixoOficinas != 0) sb.append(formatarNome("armarioBaixoOficinas")).append(": ").append(armarioBaixoOficinas).append("<br>");
+		if (armarioBaixoSmartRed != 0) sb.append(formatarNome("armarioBaixoSmartRed")).append(": ").append(armarioBaixoSmartRed).append("<br>");
+		if (armarioImpressora != 0) sb.append(formatarNome("armarioImpressora")).append(": ").append(armarioImpressora).append("<br>");
+		if (armarioImpressoraWorkCafe != 0) sb.append(formatarNome("armarioImpressoraWorkCafe")).append(": ").append(armarioImpressoraWorkCafe).append("<br>");
+	
+		if (balcaoCoworking != 0) sb.append(formatarNome("balcaoCoworking")).append(": ").append(balcaoCoworking).append("<br>");
+		if (balcaoAtendimentoSelectDuo != 0) sb.append(formatarNome("balcaoAtendimentoSelectDuo")).append(": ").append(balcaoAtendimentoSelectDuo).append("<br>");
+	
+		if (bancadaLounge != 0) sb.append(formatarNome("bancadaLounge")).append(": ").append(bancadaLounge).append("<br>");
+		if (banquetaCoworkingPreta != 0) sb.append(formatarNome("banquetaCoworkingPreta")).append(": ").append(banquetaCoworkingPreta).append("<br>");
+		if (banquetaFunPreta != 0) sb.append(formatarNome("banquetaFunPreta")).append(": ").append(banquetaFunPreta).append("<br>");
+		if (banquetaPipfeAlberflex != 0) sb.append(formatarNome("banquetaPipfeAlberflex")).append(": ").append(banquetaPipfeAlberflex).append("<br>");
+	
+		if (biomboEspecialistaArgila != 0) sb.append(formatarNome("biomboEspecialistaArgila")).append(": ").append(biomboEspecialistaArgila).append("<br>");
+		if (biomboEspecialistaGrandeOficinas != 0) sb.append(formatarNome("biomboEspecialistaGrandeOficinas")).append(": ").append(biomboEspecialistaGrandeOficinas).append("<br>");
+		if (biomboEspecialistaPequenoOficinas != 0) sb.append(formatarNome("biomboEspecialistaPequenoOficinas")).append(": ").append(biomboEspecialistaPequenoOficinas).append("<br>");
+		if (biomboEspecialistaSmartRedCinza != 0) sb.append(formatarNome("biomboEspecialistaSmartRedCinza")).append(": ").append(biomboEspecialistaSmartRedCinza).append("<br>");
+		if (biomboEspecialistaNeodotsBranco != 0) sb.append(formatarNome("biomboEspecialistaNeodotsBranco")).append(": ").append(biomboEspecialistaNeodotsBranco).append("<br>");
+		if (biomboGnsArgila != 0) sb.append(formatarNome("biomboGnsArgila")).append(": ").append(biomboGnsArgila).append("<br>");
+		if (biomboGnsOficinas != 0) sb.append(formatarNome("biomboGnsOficinas")).append(": ").append(biomboGnsOficinas).append("<br>");
+		if (biomboGnsSmartRedCinza != 0) sb.append(formatarNome("biomboGnsSmartRedCinza")).append(": ").append(biomboGnsSmartRedCinza).append("<br>");
+	
+		if (cadeiraDeRodas != 0) sb.append(formatarNome("cadeiraDeRodas")).append(": ").append(cadeiraDeRodas).append("<br>");
+		if (cadeiraDialogoCinzaOficinasCavalleti != 0) sb.append(formatarNome("cadeiraDialogoCinzaOficinasCavalleti")).append(": ").append(cadeiraDialogoCinzaOficinasCavalleti).append("<br>");
+		if (cadeiraDialogoCinzaOficinasFlexform != 0) sb.append(formatarNome("cadeiraDialogoCinzaOficinasFlexform")).append(": ").append(cadeiraDialogoCinzaOficinasFlexform).append("<br>");
+		if (cadeiraDialogoCinzaSemPadrao != 0) sb.append(formatarNome("cadeiraDialogoCinzaSemPadrao")).append(": ").append(cadeiraDialogoCinzaSemPadrao).append("<br>");
+		if (cadeiraDialogoSmartRed != 0) sb.append(formatarNome("cadeiraDialogoSmartRed")).append(": ").append(cadeiraDialogoSmartRed).append("<br>");
+		if (cadeiraEstofadoVermelhaSemPadrao != 0) sb.append(formatarNome("cadeiraEstofadoVermelhaSemPadrao")).append(": ").append(cadeiraEstofadoVermelhaSemPadrao).append("<br>");
+		if (cadeiraGerentePreta != 0) sb.append(formatarNome("cadeiraGerentePreta")).append(": ").append(cadeiraGerentePreta).append("<br>");
+		if (cadeiraGerenteSmartRed != 0) sb.append(formatarNome("cadeiraGerenteSmartRed")).append(": ").append(cadeiraGerenteSmartRed).append("<br>");
+		if (cadeiraGerenteVermelha != 0) sb.append(formatarNome("cadeiraGerenteVermelha")).append(": ").append(cadeiraGerenteVermelha).append("<br>");
+		if (cadeiraGiratoria != 0) sb.append(formatarNome("cadeiraGiratoria")).append(": ").append(cadeiraGiratoria).append("<br>");
+		if (cadeiraPipgaAlberflexCoworking != 0) sb.append(formatarNome("cadeiraPipgaAlberflexCoworking")).append(": ").append(cadeiraPipgaAlberflexCoworking).append("<br>");
+		if (cadeiraPretaSemPadrao != 0) sb.append(formatarNome("cadeiraPretaSemPadrao")).append(": ").append(cadeiraPretaSemPadrao).append("<br>");
+		if (cadeiraValentina != 0) sb.append(formatarNome("cadeiraValentina")).append(": ").append(cadeiraValentina).append("<br>");
+	
+		if (cofreBocaDeLobo != 0) sb.append(formatarNome("cofreBocaDeLobo")).append(": ").append(cofreBocaDeLobo).append("<br>");
+		if (cvi1x1 != 0) sb.append(formatarNome("cvi1x1")).append(": ").append(cvi1x1).append("<br>");
+		if (cvi2x1 != 0) sb.append(formatarNome("cvi2x1")).append(": ").append(cvi2x1).append("<br>");
+		if (cvi3x1 != 0) sb.append(formatarNome("cvi3x1")).append(": ").append(cvi3x1).append("<br>");
+	
+		if (divisoriaCaixaAcrilicoVermelho != 0) sb.append(formatarNome("divisoriaCaixaAcrilicoVermelho")).append(": ").append(divisoriaCaixaAcrilicoVermelho).append("<br>");
+	
+		if (estanteWorkCafePretaAmadeirada != 0) sb.append(formatarNome("estanteWorkCafePretaAmadeirada")).append(": ").append(estanteWorkCafePretaAmadeirada).append("<br>");
+	
+		if (forroRipado != 0) sb.append(formatarNome("forroRipado")).append(": ").append(forroRipado).append("<br>");
+	
+		if (fragmentadora != 0) sb.append(formatarNome("fragmentadora")).append(": ").append(fragmentadora).append("<br>");
+	
+		if (frigobar != 0) sb.append(formatarNome("frigobar")).append(": ").append(frigobar).append("<br>");
+	
+		if (gaveteiro != 0) sb.append(formatarNome("gaveteiro")).append(": ").append(gaveteiro).append("<br>");
+	
+		if (guicheCaixa != 0) sb.append(formatarNome("guicheCaixa")).append(": ").append(guicheCaixa).append("<br>");
+		if (guicheCaixaPne != 0) sb.append(formatarNome("guicheCaixaPne")).append(": ").append(guicheCaixaPne).append("<br>");
+	
+		if (lixeiraCafe != 0) sb.append(formatarNome("lixeiraCafe")).append(": ").append(lixeiraCafe).append("<br>");
+	
+		if (locker != 0) sb.append(formatarNome("locker")).append(": ").append(locker).append("<br>");
+	
+		if (longarinaCinza != 0) sb.append(formatarNome("longarinaCinza")).append(": ").append(longarinaCinza).append("<br>");
+		if (longarinaComObesoCinzaSmartRed != 0) sb.append(formatarNome("longarinaComObesoCinzaSmartRed")).append(": ").append(longarinaComObesoCinzaSmartRed).append("<br>");
+		if (longarinaVermelha != 0) sb.append(formatarNome("longarinaVermelha")).append(": ").append(longarinaVermelha).append("<br>");
+	
+		if (luminariaDeTrilho != 0) sb.append(formatarNome("luminariaDeTrilho")).append(": ").append(luminariaDeTrilho).append("<br>");
+		if (luminariaPendenteWkcLum11 != 0) sb.append(formatarNome("luminariaPendenteWkcLum11")).append(": ").append(luminariaPendenteWkcLum11).append("<br>");
+		if (luminariaPendenteWkcLum12 != 0) sb.append(formatarNome("luminariaPendenteWkcLum12")).append(": ").append(luminariaPendenteWkcLum12).append("<br>");
+	
+		if (lustreSolitaria != 0) sb.append(formatarNome("lustreSolitaria")).append(": ").append(lustreSolitaria).append("<br>");
+	
+		if (mesaReuniaoAberta != 0) sb.append(formatarNome("mesaReuniaoAberta")).append(": ").append(mesaReuniaoAberta).append("<br>");
+		if (mesaBistraoAmadeirada != 0) sb.append(formatarNome("mesaBistraoAmadeirada")).append(": ").append(mesaBistraoAmadeirada).append("<br>");
+		if (mesaCafePreta != 0) sb.append(formatarNome("mesaCafePreta")).append(": ").append(mesaCafePreta).append("<br>");
+		if (mesaCoworking != 0) sb.append(formatarNome("mesaCoworking")).append(": ").append(mesaCoworking).append("<br>");
+		if (mesaDeCentroCannesPreta != 0) sb.append(formatarNome("mesaDeCentroCannesPreta")).append(": ").append(mesaDeCentroCannesPreta).append("<br>");
+		if (mesaDeReuniaoGrandeQuadrada != 0) sb.append(formatarNome("mesaDeReuniaoGrandeQuadrada")).append(": ").append(mesaDeReuniaoGrandeQuadrada).append("<br>");
+		if (mesaDeReuniaoQuadradaOficinas != 0) sb.append(formatarNome("mesaDeReuniaoQuadradaOficinas")).append(": ").append(mesaDeReuniaoQuadradaOficinas).append("<br>");
+		if (mesaEspecialistaOficinasDireita != 0) sb.append(formatarNome("mesaEspecialistaOficinasDireita")).append(": ").append(mesaEspecialistaOficinasDireita).append("<br>");
+		if (mesaEspecialistaSmartRedDireita != 0) sb.append(formatarNome("mesaEspecialistaSmartRedDireita")).append(": ").append(mesaEspecialistaSmartRedDireita).append("<br>");
+		if (mesaEspecialistaSmartRedEsquerda != 0) sb.append(formatarNome("mesaEspecialistaSmartRedEsquerda")).append(": ").append(mesaEspecialistaSmartRedEsquerda).append("<br>");
+		if (mesaGnsOficinasDireita != 0) sb.append(formatarNome("mesaGnsOficinasDireita")).append(": ").append(mesaGnsOficinasDireita).append("<br>");
+		if (mesaGnsSmartRedDireita != 0) sb.append(formatarNome("mesaGnsSmartRedDireita")).append(": ").append(mesaGnsSmartRedDireita).append("<br>");
+		if (mesaLateralLaquila != 0) sb.append(formatarNome("mesaLateralLaquila")).append(": ").append(mesaLateralLaquila).append("<br>");
+		if (mesaRedondaSaarinen != 0) sb.append(formatarNome("mesaRedondaSaarinen")).append(": ").append(mesaRedondaSaarinen).append("<br>");
+		if (mesaRetaguardaArgila != 0) sb.append(formatarNome("mesaRetaguardaArgila")).append(": ").append(mesaRetaguardaArgila).append("<br>");
+		if (mesaRetaguardaOficinas != 0) sb.append(formatarNome("mesaRetaguardaOficinas")).append(": ").append(mesaRetaguardaOficinas).append("<br>");
+		if (mesaReuniaoRedonda != 0) sb.append(formatarNome("mesaReuniaoRedonda")).append(": ").append(mesaReuniaoRedonda).append("<br>");
+		if (mesaSalaAvancar != 0) sb.append(formatarNome("mesaSalaAvancar")).append(": ").append(mesaSalaAvancar).append("<br>");
+		if (mesaSelect != 0) sb.append(formatarNome("mesaSelect")).append(": ").append(mesaSelect).append("<br>");
+	
+		if (microondas != 0) sb.append(formatarNome("microondas")).append(": ").append(microondas).append("<br>");
+	
+		if (molduraTarifario32 != 0) sb.append(formatarNome("molduraTarifario32")).append(": ").append(molduraTarifario32).append("<br>");
+		if (molduraTarifario40 != 0) sb.append(formatarNome("molduraTarifario40")).append(": ").append(molduraTarifario40).append("<br>");
+		if (molduraTarifario50 != 0) sb.append(formatarNome("molduraTarifario50")).append(": ").append(molduraTarifario50).append("<br>");
+		if (molduraTarifario65 != 0) sb.append(formatarNome("molduraTarifario65")).append(": ").append(molduraTarifario65).append("<br>");
+	
+		if (poltronaICouroCinzaClaro != 0) sb.append(formatarNome("poltronaICouroCinzaClaro")).append(": ").append(poltronaICouroCinzaClaro).append("<br>");
+		if (poltronaICouroCinzaEscuro != 0) sb.append(formatarNome("poltronaICouroCinzaEscuro")).append(": ").append(poltronaICouroCinzaEscuro).append("<br>");
 	    if (poltronaITecidoVermelho != 0) sb.append("poltronaITecidoVermelho: ").append(poltronaITecidoVermelho).append("<br>");
 	    if (poltronaLCouroCinzaClaro != 0) sb.append("poltronaLCouroCinzaClaro: ").append(poltronaLCouroCinzaClaro).append("<br>");
 	    if (poltronaLCouroCinzaEscuro != 0) sb.append("poltronaLCouroCinzaEscuro: ").append(poltronaLCouroCinzaEscuro).append("<br>");
 	    if (poltronaLTecidoCinzaEscuro != 0) sb.append("poltronaLTecidoCinzaEscuro: ").append(poltronaLTecidoCinzaEscuro).append("<br>");
 	    if (poltronaLTecidoVermelho != 0) sb.append("poltronaLTecidoVermelho: ").append(poltronaLTecidoVermelho).append("<br>");
-	    if (poltronaMaria != 0) sb.append("poltronaMaria: ").append(poltronaMaria).append("<br>");
-	    if (poltronaPreta != 0) sb.append("poltronaPreta: ").append(poltronaPreta).append("<br>");
-	    if (poltronaSuiteMarromSelect != 0) sb.append("poltronaSuiteMarromSelect: ").append(poltronaSuiteMarromSelect).append("<br>");
-	    if (poltronaVermelhaSelectNina != 0) sb.append("poltronaVermelhaSelectNina: ").append(poltronaVermelhaSelectNina).append("<br>");
+	    if (poltronaMaria != 0) sb.append(formatarNome("poltronaMaria: ")).append(poltronaMaria).append("<br>");
+	    if (poltronaPreta != 0) sb.append(formatarNome("poltronaPreta: ")).append(poltronaPreta).append("<br>");
+	    if (poltronaSuiteMarromSelect != 0) sb.append(formatarNome("poltronaSuiteMarromSelect: ")).append(poltronaSuiteMarromSelect).append("<br>");
+	    if (poltronaVermelhaSelectNina != 0) sb.append(formatarNome("poltronaVermelhaSelectNina: ")).append(poltronaVermelhaSelectNina).append("<br>");
 
-	    if (puffQuadradoCouroCinzaClaro != 0) sb.append("puffQuadradoCouroCinzaClaro: ").append(puffQuadradoCouroCinzaClaro).append("<br>");
-	    if (puffQuadradoCouroCinzaEscuro != 0) sb.append("puffQuadradoCouroCinzaEscuro: ").append(puffQuadradoCouroCinzaEscuro).append("<br>");
-	    if (puffRedondoBege != 0) sb.append("puffRedondoBege: ").append(puffRedondoBege).append("<br>");
-	    if (puffRedondoCinzaClaro != 0) sb.append("puffRedondoCinzaClaro: ").append(puffRedondoCinzaClaro).append("<br>");
-	    if (puffRedondoCinzaEscuro != 0) sb.append("puffRedondoCinzaEscuro: ").append(puffRedondoCinzaEscuro).append("<br>");
-	    if (puffRedondoVermelho != 0) sb.append("puffRedondoVermelho: ").append(puffRedondoVermelho).append("<br>");
+	    if (puffQuadradoCouroCinzaClaro != 0) sb.append(formatarNome("puffQuadradoCouroCinzaClaro: ")).append(puffQuadradoCouroCinzaClaro).append("<br>");
+	    if (puffQuadradoCouroCinzaEscuro != 0) sb.append(formatarNome("puffQuadradoCouroCinzaEscuro: ")).append(puffQuadradoCouroCinzaEscuro).append("<br>");
+	    if (puffRedondoBege != 0) sb.append(formatarNome("puffRedondoBege: ")).append(puffRedondoBege).append("<br>");
+	    if (puffRedondoCinzaClaro != 0) sb.append(formatarNome("puffRedondoCinzaClaro: ")).append(puffRedondoCinzaClaro).append("<br>");
+	    if (puffRedondoCinzaEscuro != 0) sb.append(formatarNome("puffRedondoCinzaEscuro: ")).append(puffRedondoCinzaEscuro).append("<br>");
+	    if (puffRedondoVermelho != 0) sb.append(formatarNome("puffRedondoVermelho: ")).append(puffRedondoVermelho).append("<br>");
 
-	    if (quadroMissaoECultura != 0) sb.append("quadroMissaoECultura: ").append(quadroMissaoECultura).append("<br>");
-	    if (rack != 0) sb.append("rack: ").append(rack).append("<br>");
+	    if (quadroMissaoECultura != 0) sb.append(formatarNome("quadroMissaoECultura: ")).append(quadroMissaoECultura).append("<br>");
+	    if (rack != 0) sb.append(formatarNome("rack: ")).append(rack).append("<br>");
 
-	    if (sofaLina != 0) sb.append("sofaLina: ").append(sofaLina).append("<br>");
+	    if (sofaLina != 0) sb.append(formatarNome("sofaLina: ")).append(sofaLina).append("<br>");
 
-	    if (tapeteSelect != 0) sb.append("tapeteSelect: ").append(tapeteSelect).append("<br>");
+	    if (tapeteSelect != 0) sb.append(formatarNome("tapeteSelect: ")).append(tapeteSelect).append("<br>");
 
-	    if (tv26 != 0) sb.append("tv26: ").append(tv26).append("<br>");
-	    if (tv32 != 0) sb.append("tv32: ").append(tv32).append("<br>");
-	    if (tv40 != 0) sb.append("tv40: ").append(tv40).append("<br>");
-	    if (tv43 != 0) sb.append("tv43: ").append(tv43).append("<br>");
-	    if (tv50 != 0) sb.append("tv50: ").append(tv50).append("<br>");
-	    if (tv65 != 0) sb.append("tv65: ").append(tv65).append("<br>");
-	    if (tv75 != 0) sb.append("tv75: ").append(tv75).append("<br>");
+	    if (tv26 != 0) sb.append(formatarNome("tv26: ")).append(tv26).append("<br>");
+	    if (tv32 != 0) sb.append(formatarNome("tv32: ")).append(tv32).append("<br>");
+	    if (tv40 != 0) sb.append(formatarNome("tv40: ")).append(tv40).append("<br>");
+	    if (tv43 != 0) sb.append(formatarNome("tv43: ")).append(tv43).append("<br>");
+	    if (tv50 != 0) sb.append(formatarNome("tv50: ")).append(tv50).append("<br>");
+	    if (tv65 != 0) sb.append(formatarNome("tv65: ")).append(tv65).append("<br>");
+	    if (tv75 != 0) sb.append(formatarNome("tv75: ")).append(tv75).append("<br>");
 
 	    return sb.toString();
 	}
     
-    
+    private String formatarNome(String nome) {
+		// Substitui letras maiúsculas por espaço + letra maiúscula
+		String formatado = nome.replaceAll("([A-Z])", " $1");
+		// Converte a primeira letra de cada palavra para maiúscula
+		formatado = formatado.substring(0, 1).toUpperCase() + formatado.substring(1);
+		return formatado.trim(); // Remove espaços extras no início/fim
+	}
     
     
     
